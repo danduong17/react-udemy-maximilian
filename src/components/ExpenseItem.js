@@ -1,16 +1,23 @@
 import "./ExpenseItem.css";
 
-function ExpenseItem() {
-  const expenseDate = new Date(2023, 6, 1);
-  const expenseTitle = "Happy Birthday";
-  const expenseAmount = 500;
+function ExpenseItem(props) {
+  // const expenseDate = new Date(2023, 6, 1);
+  // const expenseTitle = "Happy Birthday";
+  // const expenseAmount = 500;
+  const month = props.date.toLocaleString("en-US", { month: "short" });
+  const day = props.date.toLocaleString("en-US", { day: "2-digit" });
+  const year = props.date.getFullYear();
 
   return (
     <div className="expense-item">
-      <div>{expenseDate.toUTCString()}</div>
+      <div>
+        <div>{month}</div>
+        <div>{day}</div>
+        <div>{year}</div>
+      </div>
       <div className="expense-item__description">
-        <h2 className="expense-item__title">{expenseTitle}</h2>
-        <div className="expense-item__price">${expenseAmount}</div>
+        <h2 className="expense-item__title">{props.title}</h2>
+        <div className="expense-item__price">${props.amount}</div>
       </div>
     </div>
   );
