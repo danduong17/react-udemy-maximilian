@@ -2,7 +2,7 @@ import ExpenseDate from "./ExpenseDate";
 import Card from "../UI/Card";
 import "./ExpenseItem.css";
 
-function ExpenseItem(props) {
+const ExpenseItem = (props) => {
   // const expenseDate = new Date(2023, 6, 1);
   // const expenseTitle = "Happy Birthday";
   // const expenseAmount = 500;
