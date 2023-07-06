@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     // Set States for input. The parameter that useState taking firstly is empty string because when this component initially is rendered for the first time, nothing was entered
     const [enteredTitle, setEnteredTitle] = useState('');
     // useState often takes string as a parameter. It'll always be a string even if it stores a number because it'll be a number as a string & same for date
@@ -33,12 +33,14 @@ const ExpenseForm = () => {
             without sending any request anywhere.
         */
         event.preventDefault();
+        
         const expenseData = {
             title: enteredTitle,
             amount: enteredAmount,
             date: new Date(enteredDate)
         };
-        console.log(expenseData);
+        
+        props.onSaveExpenseData(expenseData);
 
         // Clear form for next input by resetting all variables to empty
         setEnteredTitle('');
