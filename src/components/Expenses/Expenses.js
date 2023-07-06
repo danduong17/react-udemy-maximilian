@@ -23,6 +23,7 @@ const Expenses = (props) => {
         {/* Dynamic render list of data so the number of ExpenseItem will depend on number of elements in array "expenses" in App.js */}
         {props.expenses.map((expense) => (
           <ExpenseItem
+            key={expense.id}
             title={expense.title}
             amount={expense.amount}
             date={expense.date}
@@ -55,7 +56,7 @@ const Expenses = (props) => {
           date={props.expenses[3].date}
         ></ExpenseItem>
         ; */}
-        
+
       </Card>
     </div>
   );
