@@ -12,6 +12,11 @@ const Expenses = (props) => {
     setFilteredYear(selectedYear);
   };
 
+  // Must also call toString() because it won't render if not calling
+  const filteredExpenses = props.expenses.filter(expense => {
+    return expense.date.getFullYear().toString() === filteredYear
+  })
+
   return (
     <div>
       <Card className="expenses">
@@ -19,9 +24,9 @@ const Expenses = (props) => {
           selected={filteredYear}
           onFilterYear={filterYearHandler}
         />
-
-        {/* Dynamic render list of data so the number of ExpenseItem will depend on number of elements in array "expenses" in App.js */}
-        {props.expenses.map((expense) => (
+        
+        {/* Dynamic render list of data based on the filtered year */}
+        {filteredExpenses.map((expense) => (
           <ExpenseItem
             key={expense.id}
             title={expense.title}
@@ -29,6 +34,16 @@ const Expenses = (props) => {
             date={expense.date}
           ></ExpenseItem>
         ))}
+
+        {/* Dynamic render list of data so the number of ExpenseItem will depend on number of elements in array "expenses" in App.js */}
+        {/* {props.expenses.map((expense) => (
+          <ExpenseItem
+            key={expense.id}
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          ></ExpenseItem>
+        ))} */}
         
         {/* Old way: render individually each item in array "expenses" in App.js 
         => Not recommend because if adding new items in array "expenses" in App.js, we have to add ExpenseItem manually

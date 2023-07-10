@@ -8,6 +8,7 @@ const ExpensesFilter = (props) => {
     // console.log(pickedYear);
     // props.onSelectYear(pickedYear); --> instead of logging the current selected year, it logs the year that was just selected previously
     props.onFilterYear(event.target.value);
+    
   };
 
   return (
